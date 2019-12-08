@@ -226,15 +226,16 @@ function getFullNames(runners) {
 */
 function firstNamesAllCaps(runners) {
   let runArray = [];
-  runners.map(function(element){
-  //(element.first_name).toUppercase();
-  runArray.push(element.first_name);
-  
+    runners.map(function(element){
+    runArray.push(element.first_name);
 });
 
+  toUpper = function(x){
+  return x.toUpperCase();
+};
 
 
-return runArray;
+return runArray.map(toUpper);
 
 }
 
@@ -251,8 +252,13 @@ return runArray;
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
-  /* CODE HERE */
+function getRunnersByTShirtSize(runners, tShirtSize) {
+
+  function filter_size(element){
+    return element.shirt_size == tShirtSize;
+  }
+  return runners.filter(filter_size);
+
 }
 
 /**
@@ -265,8 +271,18 @@ function getRunnersByTShirtSize(/* CODE HERE */) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
-  /* CODE HERE */
+function tallyUpDonations(runners) {
+
+  let runArray = [];
+    runners.forEach(function(element){
+    runArray.push(element.donation);
+  });//makes an array of all donations
+  function makeSum(total, num){
+    return total + num;//adds elements together
+  }
+  return runArray.reduce(makeSum, 0); // reduces array to a single number, adding all the elements together and not omitting any
+
+
 }
 
 /////////////// CLOSURES ///////////////
@@ -288,9 +304,13 @@ function tallyUpDonations(/* CODE HERE */) {
 function counterMaker() {
   // BROKEN CODE STARTS
   const count = 0;
-  function counter() {
-    ++count
+  var x = -1;
+  var add = function counter(count){
+      x++;
+      return x;
   }
+
+  return add ;
   // BROKEN CODE ENDS
 }
 
@@ -314,10 +334,20 @@ function counterMaker() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
-  /* CODE HERE */
+function counterMakerWithLimit() {
+  // BROKEN CODE STARTS
+  const count = 0;
+  var x = -1;
+  var add = function counter(count){
+    x++;
+      if(x>3){
+        x=0;
+        }
+    return x;
+      }
+  return add ;
+  // BROKEN CODE ENDS
 }
-
 /////////////// END OF CHALLENGE ///////////////
 /////////////// END OF CHALLENGE ///////////////
 /////////////// END OF CHALLENGE ///////////////
