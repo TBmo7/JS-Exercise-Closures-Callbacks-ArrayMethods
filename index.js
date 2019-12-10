@@ -179,8 +179,27 @@ function processContains(item,list,callback) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+function processDuplicateFree(list, callback) {
+    
+  let newSet = new Set(list); // makes the inputted array into a set
+                              // a set is a collection of unique values
+    
+    /*
+    for(let i = 0; i<list.length; i++){
+        let tempArray= list[i];
+        let counter = -1;
+        for(let j = 0; j<list.length; j++){
+          if(tempArray == list[j]){
+            counter ++;
+          }
+        }
+        if (counter == 0){
+          newArray.push(list[i]);
+        }
+    }  */
+let newArray = [...newSet]; //turns the set back into an array
+
+return newArray;
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -313,6 +332,9 @@ function counterMaker() {
   return add ;
   // BROKEN CODE ENDS
 }
+
+
+
 
 /**
  * ### Challenge `counterMakerWithLimit`
